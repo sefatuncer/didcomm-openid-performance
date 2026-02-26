@@ -1,0 +1,7 @@
+scenario,protocol,mean_latency_ms,p95_latency_ms,avg_round_trips,avg_message_size_bytes
+Issuance,didcomm,249.70,295.37,5.0,2302
+Issuance,openid4vc,170.25,206.35,4.0,1152
+Presentation,didcomm,160.64,196.69,4.0,3571
+Presentation,openid4vc,110.42,137.21,2.0,1790
+Selective Disclosure,didcomm,240.44,294.52,4.0,4618
+Selective Disclosure,openid4vc,130.60,155.93,2.0,2303

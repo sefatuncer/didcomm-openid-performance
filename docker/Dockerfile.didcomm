@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install only required dependencies
+RUN npm install express
+
+# Copy agent source
+COPY src/agents/real-didcomm-agent.js ./agent.js
+
+ENV PORT=3000
+
+EXPOSE 3000
+
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget -q --spider http://localhost:3000/health || exit 1
+
+CMD ["node", "agent.js"]

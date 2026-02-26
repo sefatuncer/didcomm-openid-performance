@@ -2,40 +2,36 @@ services:
   didcomm-agent:
     build:
       context: ..
-      dockerfile: docker/Dockerfile.agent
+      dockerfile: docker/Dockerfile.didcomm
     container_name: didcomm-agent
     environment:
-      - AGENT_TYPE=didcomm
       - PORT=3000
-      - AGENT_LABEL=DIDComm-Docker-Agent
     ports:
-      - "3100:3000"
+      - "13000:3000"
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+      interval: 5s
+      timeout: 3s
+      retries: 5
     networks:
-      - hybrid-ssi
+      - benchmark-net
 
   openid4vc-agent:
     build:
       context: ..
-      dockerfile: docker/Dockerfile.agent
+      dockerfile: docker/Dockerfile.openid4vc
     container_name: openid4vc-agent
     environment:
-      - AGENT_TYPE=openid4vc
       - PORT=4000
-      - AGENT_LABEL=OpenID4VC-Docker-Agent
     ports:
-      - "4100:4000"
+      - "14000:4000"
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:4000/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+      interval: 5s
+      timeout: 3s
+      retries: 5
     networks:
-      - hybrid-ssi
+      - benchmark-net
 
   benchmark:
     build:
@@ -56,8 +52,8 @@ services:
       openid4vc-agent:
         condition: service_healthy
     networks:
-      - hybrid-ssi
+      - benchmark-net
 
 networks:
-  hybrid-ssi:
+  benchmark-net:
     driver: bridge

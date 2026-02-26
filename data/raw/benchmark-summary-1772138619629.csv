@@ -1,0 +1,4 @@
+Scenario,DIDComm_Mean,DIDComm_StdDev,DIDComm_P95,OpenID4VC_Mean,OpenID4VC_StdDev,OpenID4VC_P95,PercentDiff,CohensD
+Credential Issuance,65.63,8.81,78.96,19.54,1.02,20.99,235.92,7.354
+Credential Presentation,70.39,10.05,85.91,10.13,0.70,11.12,595.23,8.460
+Selective Disclosure,92.90,12.68,113.74,11.11,0.73,12.10,736.19,9.110

@@ -1,0 +1,138 @@
+{
+  "timestamp": "2026-02-26T20:19:18.855Z",
+  "configuration": {
+    "iterations": 1000,
+    "warmupIterations": 100,
+    "outputDir": "./benchmark-results"
+  },
+  "scenarios": [
+    {
+      "name": "Issuance - DIDComm",
+      "statistics": {
+        "min": "200.13",
+        "max": "299.19",
+        "mean": "249.70",
+        "median": "249.83",
+        "stdDev": "29.09"
+      },
+      "percentiles": {
+        "p50": "249.81",
+        "p90": "290.88",
+        "p95": "295.37",
+        "p99": "298.49"
+      },
+      "avgRoundTrips": "5.0",
+      "avgMessageSize": 2302
+    },
+    {
+      "name": "Issuance - OpenID4VC",
+      "statistics": {
+        "min": "130.02",
+        "max": "209.92",
+        "mean": "170.25",
+        "median": "169.79",
+        "stdDev": "23.69"
+      },
+      "percentiles": {
+        "p50": "169.74",
+        "p90": "202.53",
+        "p95": "206.35",
+        "p99": "209.25"
+      },
+      "avgRoundTrips": "4.0",
+      "avgMessageSize": 1152
+    },
+    {
+      "name": "Presentation - DIDComm",
+      "statistics": {
+        "min": "120.03",
+        "max": "199.86",
+        "mean": "160.64",
+        "median": "160.06",
+        "stdDev": "23.04"
+      },
+      "percentiles": {
+        "p50": "160.04",
+        "p90": "193.20",
+        "p95": "196.69",
+        "p99": "199.28"
+      },
+      "avgRoundTrips": "4.0",
+      "avgMessageSize": 3571
+    },
+    {
+      "name": "Presentation - OpenID4VC",
+      "statistics": {
+        "min": "80.02",
+        "max": "139.96",
+        "mean": "110.42",
+        "median": "111.73",
+        "stdDev": "17.36"
+      },
+      "percentiles": {
+        "p50": "111.73",
+        "p90": "134.53",
+        "p95": "137.21",
+        "p99": "139.42"
+      },
+      "avgRoundTrips": "2.0",
+      "avgMessageSize": 1790
+    },
+    {
+      "name": "Selective Disclosure - DIDComm",
+      "statistics": {
+        "min": "180.02",
+        "max": "299.90",
+        "mean": "240.44",
+        "median": "240.79",
+        "stdDev": "34.41"
+      },
+      "percentiles": {
+        "p50": "240.59",
+        "p90": "288.69",
+        "p95": "294.52",
+        "p99": "298.88"
+      },
+      "avgRoundTrips": "4.0",
+      "avgMessageSize": 4618
+    },
+    {
+      "name": "Selective Disclosure - OpenID4VC",
+      "statistics": {
+        "min": "100.03",
+        "max": "159.99",
+        "mean": "130.60",
+        "median": "130.73",
+        "stdDev": "16.87"
+      },
+      "percentiles": {
+        "p50": "130.70",
+        "p90": "153.45",
+        "p95": "155.93",
+        "p99": "159.14"
+      },
+      "avgRoundTrips": "2.0",
+      "avgMessageSize": 2303
+    }
+  ],
+  "comparisons": [
+    {
+      "scenario": "Credential Issuance",
+      "latencyDiff": "79.45",
+      "latencyDiffPercent": "46.7",
+      "winner": "openid4vc"
+    },
+    {
+      "scenario": "Credential Presentation",
+      "latencyDiff": "50.22",
+      "latencyDiffPercent": "45.5",
+      "winner": "openid4vc"
+    },
+    {
+      "scenario": "Selective Disclosure",
+      "latencyDiff": "109.84",
+      "latencyDiffPercent": "84.1",
+      "winner": "openid4vc"
+    }
+  ]
+}
