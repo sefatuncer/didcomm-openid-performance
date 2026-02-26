@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-02-26T08:01:21.848Z",
+  "methodology": {
+    "test": "Welch's t-test (unequal variances)",
+    "effectSize": "Cohen's d",
+    "confidenceLevel": 0.95,
+    "sampleSize": 1000
+  },
+  "results": [
+    {
+      "scenario": "Credential Issuance",
+      "n": 1000,
+      "didcomm": {
+        "mean": 192.8158668371874,
+        "sd": 18.741421175881186,
+        "ci": {
+          "lower": 191.6542615181032,
+          "upper": 193.9774721562716,
+          "margin": 1.1616053190841953
+        }
+      },
+      "openid": {
+        "mean": 139.81717700409922,
+        "sd": 13.957332347627624,
+        "ci": {
+          "lower": 138.95209258264163,
+          "upper": 140.68226142555682,
+          "margin": 0.865084421457587
+        }
+      },
+      "tTest": {
+        "t": 71.72155974207644,
+        "df": 1846.4561774018293,
+        "pValue": 0
+      },
+      "effectSize": {
+        "d": 3.207485660711903,
+        "interpretation": "large"
+      },
+      "practical": {
+        "diffMs": 53,
+        "diffPercent": "38.0"
+      }
+    },
+    {
+      "scenario": "Credential Presentation",
+      "n": 1000,
+      "didcomm": {
+        "mean": 174.69584953319512,
+        "sd": 17.71717612061509,
+        "ci": {
+          "lower": 173.59772758034433,
+          "upper": 175.7939714860459,
+          "margin": 1.0981219528507995
+        }
+      },
+      "openid": {
+        "mean": 106.31592562171167,
+        "sd": 10.65743139462831,
+        "ci": {
+          "lower": 105.65537118031708,
+          "upper": 106.97648006310627,
+          "margin": 0.6605544413946007
+        }
+      },
+      "tTest": {
+        "t": 104.58541706585159,
+        "df": 1638.2587121473273,
+        "pValue": 0
+      },
+      "effectSize": {
+        "d": 4.677202040288215,
+        "interpretation": "large"
+      },
+      "practical": {
+        "diffMs": 67.48,
+        "diffPercent": "63.3"
+      }
+    },
+    {
+      "scenario": "Selective Disclosure",
+      "n": 1000,
+      "didcomm": {
+        "mean": 218.91661549712043,
+        "sd": 22.119362602267238,
+        "ci": {
+          "lower": 217.5456431993199,
+          "upper": 220.28758779492097,
+          "margin": 1.3709722978005465
+        }
+      },
+      "openid": {
+        "mean": 117.8232209143114,
+        "sd": 12.224019063725677,
+        "ci": {
+          "lower": 117.06556836321865,
+          "upper": 118.58087346540417,
+          "margin": 0.7576525510927652
+        }
+      },
+      "tTest": {
+        "t": 126.49598893642292,
+        "df": 1557.147334263377,
+        "pValue": 0
+      },
+      "effectSize": {
+        "d": 5.657072602858059,
+        "interpretation": "large"
+      },
+      "practical": {
+        "diffMs": 101.19000000000001,
+        "diffPercent": "85.9"
+      }
+    }
+  ]
+}

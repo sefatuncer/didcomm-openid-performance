@@ -1,0 +1,63 @@
+services:
+  didcomm-agent:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.agent
+    container_name: didcomm-agent
+    environment:
+      - AGENT_TYPE=didcomm
+      - PORT=3000
+      - AGENT_LABEL=DIDComm-Docker-Agent
+    ports:
+      - "3100:3000"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - hybrid-ssi
+
+  openid4vc-agent:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.agent
+    container_name: openid4vc-agent
+    environment:
+      - AGENT_TYPE=openid4vc
+      - PORT=4000
+      - AGENT_LABEL=OpenID4VC-Docker-Agent
+    ports:
+      - "4100:4000"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - hybrid-ssi
+
+  benchmark:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.benchmark
+    container_name: benchmark-runner
+    environment:
+      - ITERATIONS=1000
+      - WARMUP_ITERATIONS=100
+      - DIDCOMM_ENDPOINT=http://didcomm-agent:3000
+      - OPENID4VC_ENDPOINT=http://openid4vc-agent:4000
+      - OUTPUT_DIR=/results
+    volumes:
+      - ../data/raw:/results
+    depends_on:
+      didcomm-agent:
+        condition: service_healthy
+      openid4vc-agent:
+        condition: service_healthy
+    networks:
+      - hybrid-ssi
+
+networks:
+  hybrid-ssi:
+    driver: bridge

@@ -1,0 +1,285 @@
+{
+  "timestamp": "2026-02-26T08:12:18.607Z",
+  "configuration": {
+    "didcommEndpoint": "http://localhost:3100",
+    "openid4vcEndpoint": "http://localhost:4100",
+    "iterationsPerClient": 50,
+    "clientCounts": [
+      1,
+      5,
+      10,
+      20
+    ],
+    "outputDir": "./benchmark-results"
+  },
+  "results": {
+    "didcomm": {
+      "issuance": [
+        {
+          "protocol": "DIDComm",
+          "clientCount": 1,
+          "iterationsPerClient": 50,
+          "totalRequests": 50,
+          "successfulRequests": 50,
+          "errors": 0,
+          "totalTimeMs": 9849,
+          "throughput": 5.08,
+          "latency": {
+            "mean": "196.78",
+            "p50": "198.00",
+            "p95": "218.00",
+            "p99": "224.00"
+          }
+        },
+        {
+          "protocol": "DIDComm",
+          "clientCount": 5,
+          "iterationsPerClient": 50,
+          "totalRequests": 250,
+          "successfulRequests": 250,
+          "errors": 0,
+          "totalTimeMs": 9787,
+          "throughput": 25.54,
+          "latency": {
+            "mean": "194.21",
+            "p50": "195.00",
+            "p95": "213.00",
+            "p99": "217.00"
+          }
+        },
+        {
+          "protocol": "DIDComm",
+          "clientCount": 10,
+          "iterationsPerClient": 50,
+          "totalRequests": 500,
+          "successfulRequests": 500,
+          "errors": 0,
+          "totalTimeMs": 9770,
+          "throughput": 51.18,
+          "latency": {
+            "mean": "193.29",
+            "p50": "193.00",
+            "p95": "214.00",
+            "p99": "221.00"
+          }
+        },
+        {
+          "protocol": "DIDComm",
+          "clientCount": 20,
+          "iterationsPerClient": 50,
+          "totalRequests": 1000,
+          "successfulRequests": 1000,
+          "errors": 0,
+          "totalTimeMs": 9752,
+          "throughput": 102.54,
+          "latency": {
+            "mean": "192.53",
+            "p50": "192.00",
+            "p95": "213.00",
+            "p99": "219.00"
+          }
+        }
+      ],
+      "presentation": [
+        {
+          "protocol": "DIDComm",
+          "clientCount": 1,
+          "iterationsPerClient": 50,
+          "totalRequests": 50,
+          "successfulRequests": 50,
+          "errors": 0,
+          "totalTimeMs": 8694,
+          "throughput": 5.75,
+          "latency": {
+            "mean": "173.62",
+            "p50": "173.00",
+            "p95": "195.00",
+            "p99": "204.00"
+          }
+        },
+        {
+          "protocol": "DIDComm",
+          "clientCount": 5,
+          "iterationsPerClient": 50,
+          "totalRequests": 250,
+          "successfulRequests": 250,
+          "errors": 0,
+          "totalTimeMs": 8800,
+          "throughput": 28.41,
+          "latency": {
+            "mean": "175.20",
+            "p50": "176.00",
+            "p95": "197.00",
+            "p99": "202.00"
+          }
+        },
+        {
+          "protocol": "DIDComm",
+          "clientCount": 10,
+          "iterationsPerClient": 50,
+          "totalRequests": 500,
+          "successfulRequests": 500,
+          "errors": 0,
+          "totalTimeMs": 8918,
+          "throughput": 56.07,
+          "latency": {
+            "mean": "175.64",
+            "p50": "175.00",
+            "p95": "197.00",
+            "p99": "204.00"
+          }
+        },
+        {
+          "protocol": "DIDComm",
+          "clientCount": 20,
+          "iterationsPerClient": 50,
+          "totalRequests": 1000,
+          "successfulRequests": 1000,
+          "errors": 0,
+          "totalTimeMs": 8860,
+          "throughput": 112.87,
+          "latency": {
+            "mean": "174.77",
+            "p50": "175.00",
+            "p95": "197.00",
+            "p99": "203.00"
+          }
+        }
+      ]
+    },
+    "openid4vc": {
+      "issuance": [
+        {
+          "protocol": "OpenID4VC",
+          "clientCount": 1,
+          "iterationsPerClient": 50,
+          "totalRequests": 50,
+          "successfulRequests": 50,
+          "errors": 0,
+          "totalTimeMs": 7210,
+          "throughput": 6.93,
+          "latency": {
+            "mean": "144.08",
+            "p50": "144.00",
+            "p95": "160.00",
+            "p99": "166.00"
+          }
+        },
+        {
+          "protocol": "OpenID4VC",
+          "clientCount": 5,
+          "iterationsPerClient": 50,
+          "totalRequests": 250,
+          "successfulRequests": 250,
+          "errors": 0,
+          "totalTimeMs": 7157,
+          "throughput": 34.93,
+          "latency": {
+            "mean": "141.02",
+            "p50": "140.00",
+            "p95": "157.00",
+            "p99": "163.00"
+          }
+        },
+        {
+          "protocol": "OpenID4VC",
+          "clientCount": 10,
+          "iterationsPerClient": 50,
+          "totalRequests": 500,
+          "successfulRequests": 500,
+          "errors": 0,
+          "totalTimeMs": 7129,
+          "throughput": 70.14,
+          "latency": {
+            "mean": "140.06",
+            "p50": "140.00",
+            "p95": "157.00",
+            "p99": "163.00"
+          }
+        },
+        {
+          "protocol": "OpenID4VC",
+          "clientCount": 20,
+          "iterationsPerClient": 50,
+          "totalRequests": 1000,
+          "successfulRequests": 1000,
+          "errors": 0,
+          "totalTimeMs": 7132,
+          "throughput": 140.21,
+          "latency": {
+            "mean": "139.68",
+            "p50": "139.00",
+            "p95": "156.00",
+            "p99": "162.00"
+          }
+        }
+      ],
+      "presentation": [
+        {
+          "protocol": "OpenID4VC",
+          "clientCount": 1,
+          "iterationsPerClient": 50,
+          "totalRequests": 50,
+          "successfulRequests": 50,
+          "errors": 0,
+          "totalTimeMs": 5385,
+          "throughput": 9.29,
+          "latency": {
+            "mean": "107.54",
+            "p50": "106.00",
+            "p95": "129.00",
+            "p99": "131.00"
+          }
+        },
+        {
+          "protocol": "OpenID4VC",
+          "clientCount": 5,
+          "iterationsPerClient": 50,
+          "totalRequests": 250,
+          "successfulRequests": 250,
+          "errors": 0,
+          "totalTimeMs": 5485,
+          "throughput": 45.58,
+          "latency": {
+            "mean": "107.00",
+            "p50": "106.00",
+            "p95": "124.00",
+            "p99": "128.00"
+          }
+        },
+        {
+          "protocol": "OpenID4VC",
+          "clientCount": 10,
+          "iterationsPerClient": 50,
+          "totalRequests": 500,
+          "successfulRequests": 500,
+          "errors": 0,
+          "totalTimeMs": 5495,
+          "throughput": 90.99,
+          "latency": {
+            "mean": "107.31",
+            "p50": "108.00",
+            "p95": "124.00",
+            "p99": "129.00"
+          }
+        },
+        {
+          "protocol": "OpenID4VC",
+          "clientCount": 20,
+          "iterationsPerClient": 50,
+          "totalRequests": 1000,
+          "successfulRequests": 1000,
+          "errors": 0,
+          "totalTimeMs": 5439,
+          "throughput": 183.86,
+          "latency": {
+            "mean": "106.46",
+            "p50": "106.00",
+            "p95": "124.00",
+            "p99": "128.00"
+          }
+        }
+      ]
+    }
+  }
+}

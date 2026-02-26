@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy benchmark runner
+COPY src/docker-benchmark-runner.js ./benchmark.js
+
+# Create results directory
+RUN mkdir -p /results
+
+ENV ITERATIONS=1000
+ENV WARMUP_ITERATIONS=100
+ENV DIDCOMM_ENDPOINT=http://didcomm-agent:3000
+ENV OPENID4VC_ENDPOINT=http://openid4vc-agent:4000
+ENV OUTPUT_DIR=/results
+
+CMD ["node", "benchmark.js"]

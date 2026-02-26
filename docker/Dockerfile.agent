@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies
+COPY package.json ./
+RUN npm install --only=production express uuid
+
+# Copy source
+COPY src/mock-didcomm-agent.js ./didcomm-agent.js
+COPY src/mock-openid4vc-agent.js ./openid4vc-agent.js
+
+# Default to DIDComm agent
+ENV AGENT_TYPE=didcomm
+ENV PORT=3000
+
+CMD if [ "$AGENT_TYPE" = "openid4vc" ]; then node openid4vc-agent.js; else node didcomm-agent.js; fi

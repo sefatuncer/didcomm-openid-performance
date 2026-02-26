@@ -1,0 +1,121 @@
+{
+  "timestamp": "2026-02-26T07:54:24.786Z",
+  "environment": "Kubernetes (Docker Desktop)",
+  "configuration": {
+    "iterations": 1000,
+    "warmupIterations": 100,
+    "didcommEndpoint": "http://didcomm-agent:3000",
+    "openid4vcEndpoint": "http://openid4vc-agent:4000",
+    "outputDir": "/results"
+  },
+  "results": [
+    {
+      "scenario": "Credential Issuance",
+      "didcomm": {
+        "stats": {
+          "count": 1000,
+          "min": "160.00",
+          "max": "226.00",
+          "mean": "192.54",
+          "median": "192.00",
+          "p95": "212.00",
+          "p99": "220.00",
+          "stdDev": "12.08"
+        },
+        "avgRoundTrips": "5.0",
+        "avgMessageSize": 2313
+      },
+      "openid4vc": {
+        "stats": {
+          "count": 1000,
+          "min": "112.00",
+          "max": "166.00",
+          "mean": "139.54",
+          "median": "140.00",
+          "p95": "156.00",
+          "p99": "160.00",
+          "stdDev": "9.78"
+        },
+        "avgRoundTrips": "4.0",
+        "avgMessageSize": 1150
+      },
+      "comparison": {
+        "latencyDiff": "53.00",
+        "latencyDiffPercent": "38.0",
+        "winner": "OpenID4VC"
+      }
+    },
+    {
+      "scenario": "Credential Presentation",
+      "didcomm": {
+        "stats": {
+          "count": 1000,
+          "min": "141.00",
+          "max": "212.00",
+          "mean": "174.06",
+          "median": "174.00",
+          "p95": "196.00",
+          "p99": "202.00",
+          "stdDev": "13.37"
+        },
+        "avgRoundTrips": "4.0",
+        "avgMessageSize": 3589
+      },
+      "openid4vc": {
+        "stats": {
+          "count": 1000,
+          "min": "82.00",
+          "max": "130.00",
+          "mean": "106.58",
+          "median": "107.00",
+          "p95": "123.00",
+          "p99": "127.00",
+          "stdDev": "10.10"
+        },
+        "avgRoundTrips": "2.0",
+        "avgMessageSize": 1785
+      },
+      "comparison": {
+        "latencyDiff": "67.48",
+        "latencyDiffPercent": "63.3",
+        "winner": "OpenID4VC"
+      }
+    },
+    {
+      "scenario": "Selective Disclosure",
+      "didcomm": {
+        "stats": {
+          "count": 1000,
+          "min": "178.00",
+          "max": "261.00",
+          "mean": "218.96",
+          "median": "220.00",
+          "p95": "247.00",
+          "p99": "256.00",
+          "stdDev": "17.35"
+        },
+        "avgRoundTrips": "4.0",
+        "avgMessageSize": 4605
+      },
+      "openid4vc": {
+        "stats": {
+          "count": 1000,
+          "min": "91.00",
+          "max": "143.00",
+          "mean": "117.77",
+          "median": "117.00",
+          "p95": "137.00",
+          "p99": "141.00",
+          "stdDev": "11.59"
+        },
+        "avgRoundTrips": "2.0",
+        "avgMessageSize": 2304
+      },
+      "comparison": {
+        "latencyDiff": "101.19",
+        "latencyDiffPercent": "85.9",
+        "winner": "OpenID4VC"
+      }
+    }
+  ]
+}
