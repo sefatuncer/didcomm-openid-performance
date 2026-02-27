@@ -26,13 +26,14 @@ const CRYPTO_TIMING = {
   DIDCOMM_ENCRYPT_PER_KB_MS: 0.3,
 
   // AnonCreds operations
-  // Source: Hyperledger Indy Performance Analysis (2021)
+  // Source: Hyperledger Indy Performance Analysis (2021), libindy benchmarks
+  // Paper methodology: 15-25ms CL-sign, 20-45ms proof gen, 10-20ms verify
   ANONCREDS_BLINDING_MS: { min: 5, max: 10 },
-  ANONCREDS_CL_SIGN_MS: { min: 15, max: 45 },      // CL signature generation
-  ANONCREDS_PROOF_GEN_MS: { min: 20, max: 50 },    // ZKP proof generation
-  ANONCREDS_PROOF_VERIFY_MS: { min: 10, max: 25 }, // ZKP verification
-  ANONCREDS_PREDICATE_GEN_MS: { min: 30, max: 70 }, // Predicate proof (more expensive)
-  ANONCREDS_PREDICATE_VERIFY_MS: { min: 15, max: 35 },
+  ANONCREDS_CL_SIGN_MS: { min: 15, max: 25 },      // CL signature generation
+  ANONCREDS_PROOF_GEN_MS: { min: 20, max: 45 },    // ZKP proof generation
+  ANONCREDS_PROOF_VERIFY_MS: { min: 10, max: 20 }, // ZKP verification
+  ANONCREDS_PREDICATE_GEN_MS: { min: 30, max: 55 }, // Predicate proof (more expensive)
+  ANONCREDS_PREDICATE_VERIFY_MS: { min: 15, max: 30 },
 
   // Network simulation (Docker bridge)
   NETWORK_LATENCY_MS: { min: 0.3, max: 0.8 }

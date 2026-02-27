@@ -1,0 +1,36 @@
+# Real Cryptographic Benchmark Runner
+# Orchestrates benchmarks against real crypto agents
+
+FROM node:20-bookworm-slim
+
+# Install utilities
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    jq \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install --omit=dev
+
+# Copy benchmark runner
+COPY src/benchmark/real-benchmark-runner.js ./src/benchmark/
+
+# Create results directory
+RUN mkdir -p /results
+
+# Environment defaults
+ENV ITERATIONS=1000
+ENV WARMUP_ITERATIONS=100
+ENV CONCURRENT_CLIENTS=1,5,10,20
+ENV DIDCOMM_ENDPOINT=http://real-didcomm-agent:3000
+ENV OPENID4VC_ENDPOINT=http://real-openid4vc-agent:4000
+ENV OUTPUT_DIR=/results
+ENV OUTPUT_FORMAT=csv,json
+
+CMD ["node", "src/benchmark/real-benchmark-runner.js"]

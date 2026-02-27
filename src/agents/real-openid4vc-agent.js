@@ -25,6 +25,7 @@ const CRYPTO_TIMING = {
 
   // JWT operations (ES256 - ECDSA P-256)
   // Source: jose library benchmarks, Node.js crypto benchmarks
+  // Paper methodology: 1-3ms ECDSA signing, 1-2ms verification
   JWT_SIGN_MS: { min: 1, max: 3 },
   JWT_VERIFY_MS: { min: 1, max: 2 },
 

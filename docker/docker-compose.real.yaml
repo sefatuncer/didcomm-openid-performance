@@ -1,0 +1,99 @@
+# Docker Compose for Real Cryptographic Benchmarks
+# Uses actual CL-signatures and ECDSA operations
+#
+# Usage:
+#   docker compose -f docker/docker-compose.real.yaml up --build
+#
+# Benchmark endpoints:
+#   - DIDComm: http://localhost:13000/didcomm/issue, /present, /selective-disclose
+#   - OpenID4VC: http://localhost:14000/openid4vc/issue, /present, /selective-disclose
+
+services:
+  # Real DIDComm + AnonCreds Agent
+  real-didcomm-agent:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.real-didcomm
+    container_name: real-didcomm-agent
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    ports:
+      - "13000:3000"
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          cpus: '2'
+          memory: 4G
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 15s
+    networks:
+      - real-benchmark-net
+    restart: unless-stopped
+
+  # Real OpenID4VC + SD-JWT Agent
+  real-openid4vc-agent:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.real-openid4vc
+    container_name: real-openid4vc-agent
+    environment:
+      - PORT=4000
+      - NODE_ENV=production
+    ports:
+      - "14000:4000"
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          cpus: '2'
+          memory: 4G
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 15s
+    networks:
+      - real-benchmark-net
+    restart: unless-stopped
+
+  # Benchmark Runner
+  real-benchmark-runner:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.real-benchmark
+    container_name: real-benchmark-runner
+    environment:
+      - ITERATIONS=1000
+      - WARMUP_ITERATIONS=100
+      - CONCURRENT_CLIENTS=1,5,10,20,50,100
+      - DIDCOMM_ENDPOINT=http://real-didcomm-agent:3000
+      - OPENID4VC_ENDPOINT=http://real-openid4vc-agent:4000
+      - OUTPUT_DIR=/results
+      - OUTPUT_FORMAT=csv,json
+    volumes:
+      - ../data/raw/real-benchmarks:/results
+    depends_on:
+      real-didcomm-agent:
+        condition: service_healthy
+      real-openid4vc-agent:
+        condition: service_healthy
+    networks:
+      - real-benchmark-net
+
+networks:
+  real-benchmark-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

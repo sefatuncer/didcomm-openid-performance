@@ -1,0 +1,36 @@
+# Real Cryptographic DIDComm + AnonCreds Agent
+# Uses actual cryptographic operations for benchmarking
+
+FROM node:20-bookworm-slim
+
+# Install build dependencies for native modules
+RUN apt-get update && apt-get install -y \
+    python3 \
+    make \
+    g++ \
+    git \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install --omit=dev
+
+# Copy source code
+COPY src/agents/real-crypto-didcomm.js ./src/agents/
+
+# Environment
+ENV PORT=3000
+ENV NODE_ENV=production
+
+# Health check
+HEALTHCHECK --interval=5s --timeout=3s --start-period=10s --retries=5 \
+    CMD wget -q --spider http://localhost:3000/health || exit 1
+
+EXPOSE 3000
+
+CMD ["node", "src/agents/real-crypto-didcomm.js"]
